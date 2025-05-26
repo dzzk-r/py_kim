@@ -23,6 +23,7 @@ def encode(text):
         else:
             chars_encoded += char  # pass-through for non-letters
 
+
     # STEP 2 - Substring Rearrangement
     # For every word with > 5 characters:
     # - Split into two halves
@@ -48,6 +49,7 @@ def encode(text):
 
     rearranged_text = ' '.join(words_rearranged)
 
+    
     # STEP 3 - Index-Based Encoding
     # For each character:
     # - Add its index (starting from 0) to its ASCII code
@@ -62,23 +64,22 @@ def encode(text):
     for index, char in enumerate(rearranged_text):
         position_encoded += chr(ord(char) + index)
 
-    # STEP 4 - Special Symbol Insertion
-    # After every 3rd character (1-based), insert "#"
+    
+    # STEP 4 - Special Symbol Insertion (# after every 3 characters)
+    # After every third character (1-based counting), insert a "#" (hash) character
 
     # ToDo:
-    # - Should count include digits?
-    # - Should we mark only visible ASCII? (Current: all)
-    # - Decoder must strip every 4th character back
+    # - Confirm if this should count only letters or all characters
+    # - Should it ignore inside digit groups?
 
-    salted = ""
-    for i, char in enumerate(position_encoded):
-        salted += char
+    with_hash = ""
+    for i, ch in enumerate(position_encoded):
+        with_hash += ch
         if (i + 1) % 3 == 0:
-            salted += "#"
+            with_hash += "#"
 
-    # Placeholder for STEP 5 - Number Encoding
-    # return salted
-    return salted
+    return with_hash
+
 
     # STEP 5 - Number Encoding
     # For each numeric sequence:
