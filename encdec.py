@@ -2,8 +2,8 @@ import re  # regex toolset
 
 def encode(text):
     # STEP 1 - Replace vowels and shift consonants
-    # Vowels (a, e, i, o, u) → ASCII ("e" → "101")
-    # Consonants → shifted to the next letter ('d' → 'e', 'z' → 'a')
+    # Vowels (a, e, i, o, u) -> ASCII ("e" -> "101")
+    # Consonants -> shifted to the next letter ('d' -> 'e', 'z' -> 'a')
     # ToDo: Clarify vowel formatting (should we insert "#" before/after ASCII? Currently: no)
 
     chars_encoded = ""
@@ -18,11 +18,11 @@ def encode(text):
         else:
             chars_encoded += char  # untouched non-letter characters
 
-    # STEP 2 – Substring Rearrangement
+    # STEP 2 - Substring Rearrangement
     # For every word longer than 5 characters:
-    #  - Split into two halves
-    #  - If the word length is odd (e.g., 7, 9), assign the middle character to the first half
-    #  - Swap halves ("Python" → "honPyt")
+    # - Split into two halves
+    # - If the word length is odd (e.g., 7, 9), assign the middle character to the first half
+    # - Swap halves ("Python" -> "honPyt")
     # ToDo: Clarify if punctuation should be treated as part of the word
 
     words = chars_encoded.split(' ')
@@ -42,11 +42,11 @@ def encode(text):
 
     # STEP 3 - Index-Based Encoding
     # For each character:
-    #  - Add its position index (starting from 0) to its ASCII value
-    #  - Convert result to character
+    # - Add its position index (starting from 0) to its ASCII value
+    # - Convert result to character
     # ToDo:
-    #  - Confirm printable range safety
-    #  - Decide whether to wrap characters that exceed ASCII 126
+    # - Confirm printable range safety
+    # - Decide whether to wrap characters that exceed ASCII 126
 
     position_encoded = ""
     for index, char in enumerate(rearranged_text):
@@ -56,13 +56,10 @@ def encode(text):
     # After every third character, insert "#"
     # ToDo: Confirm if this should count only letters or all characters
 
-
     # STEP 5 - Number Encoding
     # For each numeric sequence:
-    #  - Multiply number by 3
-    #  - Reverse the digits
-    #  - Insert "#" between digits (optional; format inconsistency noted)
+    # - Multiply number by 3
+    # - Reverse the digits
+    # - Insert "#" between digits (optional; format inconsistency noted)
     # ToDo:
-    #  - Confirm target format: "3#69" vs "9#6#3"
-
-    
+    # - Confirm target format: "3#69" vs "9#6#3"
