@@ -23,6 +23,7 @@ def encode(text):
         else:
             chars_encoded += char  # untouched ![a-zA-Z] goes straight-forward
 
+
     # STEP 2 - Substring Rearrangement
     # For every word length > than 5 characters:
     # - Split into two halves
@@ -49,6 +50,7 @@ def encode(text):
 
     rearranged_text = ' '.join(words_rearranged)
 
+    
     # STEP 3 - Index-Based Encoding
     # For each character in the result string:
     # - Add its position index (starting from 0) to its ASCII value(?)
@@ -62,12 +64,14 @@ def encode(text):
     for index, char in enumerate(rearranged_text):
         position_encoded += chr(ord(char) + index)
 
+
     # STEP 4 - Special Symbol Insertion
     # - After every third character (1-based counting), insert a "#" (hash) character
 
     # ToDo:
     # - Confirm if this should count only letters or all characters
     # - Should it ignore inside digit groups?
+
 
     # STEP 5 - Number Encoding
     # For each numeric sequence:
@@ -78,4 +82,16 @@ def encode(text):
     # ToDo:
     # - Confirm target format: "3#69" vs "9#6#3"
     # - Are numbers grouped or handled digit-by-digit?
-    
+
+    # def transform_number(match):
+    #     original_number = match.group()                # ex. "123"
+    #     multiplied = int(original_number) * 3          # 123 * 3 = 369
+    #     multiplied_str = str(multiplied)               # 369 to "369"
+    #
+    #     # reverse digits
+    #     reversed_digits = []
+    #     for digit in multiplied_str:
+    #         reversed_digits.insert(0, digit)           # shift from start
+        
+    #     # joining w/ "#"
+    #     return '#'.join(reversed_digits)               # "9#6#3"
