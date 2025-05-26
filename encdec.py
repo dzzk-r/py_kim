@@ -29,7 +29,21 @@ def encode(text):
 
     # ToDo:
     # Clearify 2nd step questions
+    
+    words = chars_encoded.split(' ')
+    words_rearranged = []
 
+    for word in words:
+        if len(word) > 5:
+            midd = (len(word) + 1) // 2  # if odd, first half gets extra character(?)
+            first_half = word[:midd]
+            second_half = word[midd:]
+            twisted = second_half + first_half
+            words_rearranged.append(twisted)
+        else:
+            words_rearranged.append(word)  # short words stays as-is
+
+    rearranged_text = ' '.join(words_rearranged)
 
     # STEP 3 - Index-Based Encoding
     # For each character in the result string:
