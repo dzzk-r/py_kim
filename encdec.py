@@ -21,7 +21,7 @@ def encode(text):
     # STEP 2 - Substring Rearrangement
     # For every word longer than 5 characters:
     # - Split into two halves
-    # - If the word length is odd (e.g., 7, 9), assign the middle character to the first half
+    # - If the word length is odd, assign the middle character to the first half
     # - Swap halves ("Python" -> "honPyt")
     # ToDo: Clarify if punctuation should be treated as part of the word
 
@@ -30,7 +30,7 @@ def encode(text):
 
     for word in words:
         if len(word) > 5:
-            midd = (len(word) + 1) // 2  # first half gets middle char if odd
+            midd = (len(word) + 1) // 2
             first_half = word[:midd]
             second_half = word[midd:]
             twisted = second_half + first_half
