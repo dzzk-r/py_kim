@@ -4,10 +4,13 @@ def encode(text):
     # STEP 1 - Replace vowels and shift consonants
     # Vowels (a, e, i, o, u) becomes ASCII ("e" -> "101" ("#"?))
     # Consonants shifted to the next letter ('d' to 'f' or 'd' to 'e' to 'f' or '101' or '#101'; 'z' to 'a' or 'z' to 'Z')
- 
+
     # ToDo:
-    # Clearify 1st step questions
-  
+    # - Clarify 1st step questions:
+    #   - Should vowels have "#" before/after ASCII? (e.g., "#101"?)
+    #   - Should consonant shift jump 1 or 2 letters?
+    #   - Preserve case for 'z' -> 'a'? (Z -> A or Z -> a)
+
     chars_encoded = ""
     for char in text:
         if char.lower() in "aeiou":
@@ -20,16 +23,17 @@ def encode(text):
         else:
             chars_encoded += char  # untouched ![a-zA-Z] goes straight-forward
 
-
-    # STEP 2 – Substring Rearrangement
+    # STEP 2 - Substring Rearrangement
     # For every word length > than 5 characters:
-    #  - Split into two halves
-    #  - If the word length is odd (7,9,etc ), assign the middle character to the first half -> Forward -> ard w For(?)
-    #. - Swap halves ("Python" -> "honPyt")
+    # - Split into two halves
+    # - If the word length is odd (7, 9, etc), assign the middle character to the first half -> Forward -> ard w For(?)
+    # - Swap halves ("Python" -> "honPyt")
 
     # ToDo:
-    # Clearify 2nd step questions
-    
+    # - Clarify 2nd step questions:
+    #   - Should punctuation be treated as part of the word?
+    #   - Is word definition based on spaces?
+
     words = chars_encoded.split(' ')
     words_rearranged = []
 
@@ -47,16 +51,31 @@ def encode(text):
 
     # STEP 3 - Index-Based Encoding
     # For each character in the result string:
-    #  - Add its position index (starting from 0) to its ASCII value(?)
-    #  - Convert the resulting number back to a character(?)
+    # - Add its position index (starting from 0) to its ASCII value(?)
+    # - Convert the resulting number back to a character(?)
 
+    # ToDo:
+    # - Confirm printable range safety
+    # - Decide whether to wrap characters that exceed ASCII 126
+
+    position_encoded = ""
+    for index, char in enumerate(rearranged_text):
+        position_encoded += chr(ord(char) + index)
 
     # STEP 4 - Special Symbol Insertion
-    #  - After every third character (1-based counting), insert a "#" (hash) character
+    # - After every third character (1-based counting), insert a "#" (hash) character
 
+    # ToDo:
+    # - Confirm if this should count only letters or all characters
+    # - Should it ignore inside digit groups?
 
     # STEP 5 - Number Encoding
     # For each numeric sequence:
-    #  - Multiply the number by 3
-    #. - Reverse the resulting digits
-    #  - Optionally, insert # between digits (depending on final format spec)
+    # - Multiply the number by 3
+    # - Reverse the resulting digits
+    # - Optionally, insert "#" between digits (depending on final format spec)
+
+    # ToDo:
+    # - Confirm target format: "3#69" vs "9#6#3"
+    # - Are numbers grouped or handled digit-by-digit?
+    
