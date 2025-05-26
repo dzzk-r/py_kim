@@ -24,6 +24,7 @@ def encode(text):
             chars_encoded += char  # pass-through for non-letters
 
 
+
     # STEP 2 - Substring Rearrangement
     # For every word with > 5 characters:
     # - Split into two halves
@@ -66,7 +67,7 @@ def encode(text):
 
     
     # STEP 4 - Special Symbol Insertion (# after every 3 characters)
-    # After every third character (1-based counting), insert a "#" (hash) character
+    # - After every third character (1-based counting), insert a "#" (hash) character
 
     # ToDo:
     # - Confirm if this should count only letters or all characters
@@ -90,4 +91,16 @@ def encode(text):
     # ToDo:
     # - Confirm target format: "3#69" vs "9#6#3"
     # - Are numbers grouped or handled digit-by-digit?
-    
+
+    # def transform_number(match):
+    #     original_number = match.group()                # ex. "123"
+    #     multiplied = int(original_number) * 3          # 123 * 3 = 369
+    #     multiplied_str = str(multiplied)               # 369 to "369"
+    #
+    #     # reverse digits
+    #     reversed_digits = []
+    #     for digit in multiplied_str:
+    #         reversed_digits.insert(0, digit)           # shift from start
+        
+    #     # joining w/ "#"
+    #     return '#'.join(reversed_digits)               # "9#6#3"
