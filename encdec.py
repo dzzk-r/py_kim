@@ -23,7 +23,18 @@ def encode(text):
 
     # STEP 2
     
-    # STEP 3
+    # STEP 3 - Index-Based Encoding
+    # For every character, add its index (starting from 0) to its ASCII code
+    # ToDo: 
+    # Clearify 3rd step Q
+    #  - It creates a position-based offset, which makes even repeated letters encode differently
+    #  - It mitigates a risk(!)
+    #  - It may push characters beyond visible (strong length?)
+
+    position_encoded = ""
+    for index, char in enumerate(rearranged_text):
+        position_encoded += chr(ord(char) + index)
+        
     
     # STEP 4
     
