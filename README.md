@@ -39,6 +39,16 @@ graph LR
  
 
 # STEP 2 - Substring Rearrangement
+```py
+  # Instead of: "Python" -> "honPyt"
+  # You separate vowels and consonants:
+  #  - vowels = ['o'], consonants = ['P','y','t','h','n'] -> merged arbitrarily
+```
+- Completely original word order loses 
+- Impossible to to reverse
+-  Breaks mapping between 'encode' and 'decode' 
+
+
 # STEP 3 - Index-Based Encoding
 # STEP 4 - Special Symbol Insertion
 # STEP 5 - Number Encoding
