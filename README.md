@@ -52,3 +52,12 @@ graph LR
 # STEP 3 - Index-Based Encoding
 # STEP 4 - Special Symbol Insertion
 # STEP 5 - Number Encoding
+```python
+  # Instead of: "123" -> "369" -> "9#6#3"
+  # You encode: "1" -> "one", "2" -> "two", "3" -> "three"
+```
+- output length changes
+- ireversible with no embedded dictionary
+- collision Russia with real words
+
+  
