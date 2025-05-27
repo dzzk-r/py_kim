@@ -27,7 +27,17 @@ graph LR
   step5 --> opt5_2["bad: replace digits with 'emoji' (non-reversible)"] 
   step5 --> opt5_3["bad: remove leading zeros (breaks restore)"]
 ```
+
 # STEP 1 - Replace vowels and shift consonants
+```py
+  # Instead of: char == "d" -> "e"
+  # You encode: char == "d" -> "f"
+```
+- Ambiguitty: "f" might be original or result of shift
+- Decoder has no context to subtract +2 correctly
+- Colides with ASCII replacement vowel
+ 
+
 # STEP 2 - Substring Rearrangement
 # STEP 3 - Index-Based Encoding
 # STEP 4 - Special Symbol Insertion
