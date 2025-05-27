@@ -1,16 +1,34 @@
 ```mermaid
-graph TD
-  encode --> step1
-  encode --> step2
-  encode --> step3
-  encode --> step4
-  encode --> step5
+graph LR
+  encode["encode()"]
 
-  step1 --> step1_dec
-  step2 --> step2_dec
-  step3 --> step3_dec
-  step4 --> step4_dec
-  step5 --> step5_dec
+  encode --> step1["STEP 1 - vowels & consonants"]
+  encode --> step2["STEP 2 - word rearrangement"]
+  encode --> step3["STEP 3 - index shift"]
+  encode --> step4["STEP 4 - insert '#' "]
+  encode --> step5["STEP 5 - transform numbers"]
 
-  step1 -->|ASCII vowels| ascii_logic
-  step5 -->|regex transform| regex_handling
+  step1 --> opt1_1["good: vowels to ASCII"]
+  step1 --> opt1_2["bad: vowels with # (exmp #101)"]
+  step1 --> opt1_3["good: consonants +1"]
+  step1 --> opt1_4["bad: consonants +2 (breaks decode)"]
+
+  step2 --> opt2_1["good: split & swap halves"]
+  step2 --> opt2_2["bad: swap by letter type (unreliable)"]
+
+  step3 --> opt3_1["good: add index to ord"]
+  step3 --> opt3_2["bad: add random value (non-reversible)"] 
+  step3 --> opt3_3["good: ASCII wrap if >126"]
+
+  step4 --> opt4_1["good: '#' every 3 chars (by index)"]
+  step4 --> opt4_2["bad: '#' after vowels only (ambiguous)"]
+
+  step5 --> opt5_1["good: multiply *3, reverse, join with #"]
+  step5 --> opt5_2["bad: replace digits with 'emoji' (non-reversible)"] 
+  step5 --> opt5_3["bad: remove leading zeros (breaks restore)"]
+```
+# STEP 1 - Replace vowels and shift consonants
+# STEP 2 - Substring Rearrangement
+# STEP 3 - Index-Based Encoding
+# STEP 4 - Special Symbol Insertion
+# STEP 5 - Number Encoding
