@@ -58,6 +58,6 @@ graph LR
 ```
 - output length changes
 - ireversible with no embedded dictionary
-- collision Russia with real words
+- collision with real words
 
   
