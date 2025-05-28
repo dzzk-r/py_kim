@@ -60,5 +60,3 @@ graph LR
 - ireversible with no embedded dictionary
 - collision with real words
 
-
-  
